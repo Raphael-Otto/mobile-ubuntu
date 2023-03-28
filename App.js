@@ -1,21 +1,13 @@
-import { Image, Text, View, StyleSheet, FlatList } from 'react-native';
+import { Image, Text, View, StyleSheet, ScrollView } from 'react-native';
 
 function Card(props) {
   return (
     <View style={styles.card}>
       <Image style={{ 
-        resizeMode: 'stretch', 
+        resizeMode: 'cover', 
         height: 200, 
         borderTopLeftRadius: 10, 
         borderTopRightRadius: 10,
-        shadowColor: "#000000",
-        shadowOffset: {
-          width: 0,
-          height: 7,
-        },
-        shadowOpacity:  0.21,
-        shadowRadius: 7.68,
-        elevation: 10,
         }} source={{uri:props.livro.capa}} />
       <Text style={{ paddingLeft: 5, paddingTop: 5 }}> {props.livro.titulo} </Text>
       <Text style={{ paddingLeft: 5, paddingTop: 5 }}> R$ {props.livro.preco} </Text>
@@ -36,81 +28,84 @@ export default function App() {
         preco: 10999.99
       },
       {
-        capa: "https://images.booksense.com/images/460/994/9781788994460.jpg",
-        titulo: 'Livro 3',
-        preco: 225.90
+        capa: "https://www.comprerural.com/wp-content/uploads/2018/06/8e4259d783349ecc814dfbe4a5207e78.jpg",
+        titulo: 'Cavalo Peludo',
+        preco: 15999.99
       },
       {
-        capa: "https://images.booksense.com/images/460/994/9781788994460.jpg",
-        titulo: 'Livro 4',
-        preco: 325.90
+        capa: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Cavalo_Nordestino_Maniva.jpg/640px-Cavalo_Nordestino_Maniva.jpg",
+        titulo: 'Cavalo Nordestino',
+        preco: 7999.99
       },
       {
-        capa: "https://images.booksense.com/images/460/994/9781788994460.jpg",
-        titulo: 'Livro 4',
-        preco: 325.90
+        capa: "https://www.montarumnegocio.com/wp-content/uploads/2021/05/criacao-de-cavalos.jpg",
+        titulo: 'Cavalo Caramelo',
+        preco: 8999.00
       },
       {
-        capa: "https://images.booksense.com/images/460/994/9781788994460.jpg",
-        titulo: 'Livro 4',
-        preco: 325.90
+        capa: "https://classic.exame.com/wp-content/uploads/2017/06/2017-06-15-transformando-cavalos-em-unicornios.png?w=980",
+        titulo: 'Cavalo Unicórnio',
+        preco: 17999.99
       },
       {
-        capa: "https://images.booksense.com/images/460/994/9781788994460.jpg",
-        titulo: 'Livro 4',
-        preco: 325.90
+        capa: "https://imagens-cdn.canalrural.com.br/2018/06/1525016748330.jpg",
+        titulo: 'Cavalo Preto',
+        preco: 12999.99
       },
       {
-        capa: "https://images.booksense.com/images/460/994/9781788994460.jpg",
-        titulo: 'Livro 4',
-        preco: 325.90
+        capa: "https://i0.wp.com/agronews.tv.br/wp-content/uploads/2022/03/cavalo-br-1024x664-1.jpg?resize=355%2C230&ssl=1",
+        titulo: 'Cavalo Branco',
+        preco: 11999.99
       },
     ]
 
 
   return (
+    <ScrollView>
+
     <View style={styles.container}>
-      <Text style={{fontSize: 30, fontWeight: 'bold', paddingBottom: 15,}}>Cavalos </Text>
+      <Text style={{fontSize: 30, fontWeight: 'bold', paddingBottom: 20,}}>Cavalos </Text>
       <View style={styles.conteudo}>
-        <FlatList 
-          data={livros}
-          renderItem={({item}) => <Card livro={item} />}
-        />
+        <View style={styles.cardes}>
+          {livros.map((livro) => (
+            <Card livro={livro} /> 
+          ))}
+        </View>
       </View>
     </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 10,
-    marginTop: 40,
-    backgroundColor: '#ccc',
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity:  0.21,
-    shadowRadius: 7.68,
-    elevation: 10,
+    paddingTop: 20,
+    marginTop: 0,
+    backgroundColor: '#FFF',
   },
   conteudo: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     backgroundColor: '#ecf0f1',
-    paddingTop: 20,
+    paddingTop: 0,
+    justifyContent: 'center',
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
+  },
+  cardes: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: "100%",
   },
   card: {
     width: '40%',
     height: 250,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#FFF',
     borderRadius: 10,
     margin: 15,
     shadowColor: "#000000",
