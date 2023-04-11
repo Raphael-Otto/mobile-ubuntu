@@ -3,7 +3,7 @@ import { Image, Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'rea
 import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
-  const livros = [
+  const cavalos = [
     {
       capa: "https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia16043/caracteristicas-cavalos-saudaveis-artigos-cursos-cpt.jpg",
       titulo: 'Cavalo Marrom',
@@ -45,15 +45,13 @@ export default function App() {
       preco: 11999.99
     },
   ]
-
-
+function Card(props) {
   const [liked, setLiked] = useState(false);
 
   const handlePress = () => {
     setLiked(!liked);
   };
   
-function Card(props) {
     return (
       <View style={styles.card}>
         <Image style={{ 
@@ -61,9 +59,9 @@ function Card(props) {
           height: 200, 
           borderTopLeftRadius: 10, 
           borderTopRightRadius: 10,
-          }} source={{uri:props.livro.capa}} />
-        <Text style={{ paddingLeft: 5, paddingTop: 5 }}> {props.livro.titulo} </Text>
-        <Text style={{ paddingLeft: 5, paddingTop: 5 }}> R$ {props.livro.preco} </Text>
+          }} source={{uri:props.cavalo.capa}} />
+        <Text style={{ paddingLeft: 5, paddingTop: 5 }}> {props.cavalo.titulo} </Text>
+        <Text style={{ paddingLeft: 5, paddingTop: 5 }}> R$ {props.cavalo.preco} </Text>
         <TouchableOpacity style={styles.curtidas}
           onPress={handlePress}>
             {liked ? (
@@ -82,8 +80,8 @@ function Card(props) {
         <Text style={{fontSize: 30, fontWeight: 'bold', paddingBottom: 20,}}>Cavalos </Text>
         <View style={styles.conteudo}>
           <View style={styles.conjunto_cards}>
-            {livros.map((livro) => (
-              <Card livro={livro} /> 
+            {cavalos.map((cavalo) => (
+              <Card cavalo={cavalo} /> 
             ))}
           </View>
         </View>
